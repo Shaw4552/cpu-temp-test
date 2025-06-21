@@ -1,0 +1,71 @@
+✅ Bash Script: cpu-temp-test.sh
+📁 Recommended location:
+/mnt/FreeCloud41/Projects/cpu-temp-test/cpu-temp-test.sh
+
+bash
+Copy
+Edit
+#!/bin/bash
+
+# ================================================
+# CPU Temp Test Script - Post-Thermal Paste
+# Author: jshaw
+# System: MacBookPro8,1 (Linux Mint)
+# Date: June 21, 2025
+# ================================================
+
+PROJECT_DIR="/mnt/FreeCloud41/Projects/cpu-temp-test"
+TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
+LOG_PREFIX="$PROJECT_DIR/cpu-temp-test-$TIMESTAMP"
+
+mkdir -p "$PROJECT_DIR"
+
+echo "📥 Phase 1: IDLE temp snapshot..."
+echo "--- IDLE ---" > "${LOG_PREFIX}-idle.txt"
+uptime >> "${LOG_PREFIX}-idle.txt"
+sensors >> "${LOG_PREFIX}-idle.txt"
+sleep 2
+
+echo "🔥 Phase 2: LOAD test running for 5 minutes..."
+echo "--- LOAD ---" > "${LOG_PREFIX}-load.txt"
+uptime >> "${LOG_PREFIX}-load.txt"
+stress --cpu 2 --timeout 300 &  # 5 minutes stress
+STRESS_PID=$!
+
+# Record load temp at start and end
+echo "[START of stress test]" >> "${LOG_PREFIX}-load.txt"
+sensors >> "${LOG_PREFIX}-load.txt"
+
+wait $STRESS_PID
+
+echo "[END of stress test]" >> "${LOG_PREFIX}-load.txt"
+sensors >> "${LOG_PREFIX}-load.txt"
+
+echo "❄️ Phase 3: COOLDOWN for 5 minutes..."
+sleep 300  # wait 5 minutes
+
+echo "--- COOLDOWN ---" > "${LOG_PREFIX}-cooldown.txt"
+uptime >> "${LOG_PREFIX}-cooldown.txt"
+sensors >> "${LOG_PREFIX}-cooldown.txt"
+
+echo "✅ Test complete. Logs saved to:"
+ls -1 "$PROJECT_DIR" | grep "$TIMESTAMP"
+🧪 How to Use
+Save the file:
+
+bash
+Copy
+Edit
+nano /mnt/FreeCloud41/Projects/cpu-temp-test/cpu-temp-test.sh
+Make it executable:
+
+bash
+Copy
+Edit
+chmod +x /mnt/FreeCloud41/Projects/cpu-temp-test/cpu-temp-test.sh
+Run it:
+
+bash
+Copy
+Edit
+/mnt/FreeCloud41/Projects/cpu-temp-test/cpu-temp-test.sh

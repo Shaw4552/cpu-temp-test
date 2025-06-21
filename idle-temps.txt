@@ -1,0 +1,40 @@
+BAT0-acpi-0
+Adapter: ACPI interface
+in0:          11.61 V  
+temp:         +34.6°C  
+curr1:         1.75 A  (avg =  +1.57 A)
+
+applesmc-isa-0300
+Adapter: ISA adapter
+Exhaust  :   2097 RPM  (min = 2100 RPM, max = 6200 RPM)
+TB0T:         +34.2°C  
+TB1T:         +34.2°C  
+TB2T:         +33.0°C  
+TC0C:         +61.5°C  
+TC0D:         +57.0°C  
+TC0E:         +65.0°C  
+TC0F:         +66.0°C  
+TC0J:          +1.0°C  
+TC0P:         +53.8°C  
+TC1C:         +61.0°C  
+TC2C:         +63.0°C  
+TCGC:         +63.0°C  
+TCSA:         +61.0°C  
+TCTD:          -0.2°C  
+TM0P:         +42.8°C  
+TM0S:         +52.2°C  
+TMBS:          +0.0°C  
+TP0P:         +52.2°C  
+TPCD:         +60.0°C  
+TW0P:        -127.0°C  
+Th1H:         +46.0°C  
+Ts0P:         +32.8°C  
+Ts0S:         +42.0°C  
+
+coretemp-isa-0000
+Adapter: ISA adapter
+Package id 0:  +62.0°C  (high = +86.0°C, crit = +100.0°C)
+Core 0:        +61.0°C  (high = +86.0°C, crit = +100.0°C)
+Core 1:        +62.0°C  (high = +86.0°C, crit = +100.0°C)
+
+ 15:36:59 up 14:53,  1 user,  load average: 1.86, 1.21, 1.05
