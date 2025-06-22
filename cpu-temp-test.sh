@@ -1,77 +1,65 @@
-📄 cpu-temp-test.sh (Enhanced Version)
-bash
-Copy
-Edit
 #!/bin/bash
 
-# =============================================
-# 🧪 CPU Temp Test Script with Markdown Summary
-# Author: jshaw
-# System: MacBookPro8,1 - Linux Mint
-# =============================================
+# CPU Temp Test Script with Optional Cooling Pad Comparison
+# Author: jshaw | Updated: 2025-06-22
 
 PROJECT_DIR="/mnt/FreeCloud41/Projects/cpu-temp-test"
-TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
-LOG_DIR="$PROJECT_DIR/test-$TIMESTAMP"
-mkdir -p "$LOG_DIR"
+COMPARISON_DIR="$PROJECT_DIR/test-2025-06-22_cooling-pad-comparison"
+USE_PAD=""
+LABEL=""
+SUMMARY_FILE="$COMPARISON_DIR/comparison-summary.md"
 
+# Handle arguments
+if [[ "$1" == "--with-pad" ]]; then
+    USE_PAD="with-pad"
+    LABEL="With Cooling Pad"
+elif [[ "$1" == "--without-pad" ]]; then
+    USE_PAD="without-pad"
+    LABEL="Without Cooling Pad"
+else
+    echo "Usage: $0 --with-pad | --without-pad"
+    exit 1
+fi
+
+echo "🧪 Starting CPU test: $LABEL"
+LOG_IDLE="$COMPARISON_DIR/idle-$USE_PAD.txt"
+LOG_LOAD="$COMPARISON_DIR/load-$USE_PAD.txt"
+LOG_COOLDOWN="$COMPARISON_DIR/cooldown-$USE_PAD.txt"
+
+# Phase 1: Idle
 echo "📥 Phase 1: IDLE temp snapshot..."
-echo "--- IDLE ---" > "$LOG_DIR/idle-temps.txt"
-uptime >> "$LOG_DIR/idle-temps.txt"
-sensors >> "$LOG_DIR/idle-temps.txt"
-sleep 2
+for i in {1..60}; do
+    sensors >> "$LOG_IDLE"
+    echo "---" >> "$LOG_IDLE"
+    sleep 10
+done
 
+# Phase 2: Load
 echo "🔥 Phase 2: LOAD test (5 mins)..."
-echo "--- LOAD ---" > "$LOG_DIR/load-temps.txt"
-uptime >> "$LOG_DIR/load-temps.txt"
-stress --cpu 2 --timeout 300 &  # 5 minutes
-STRESS_PID=$!
+stress --cpu 2 --timeout 300
+for i in {1..30}; do
+    sensors >> "$LOG_LOAD"
+    echo "---" >> "$LOG_LOAD"
+    sleep 10
+done
 
-echo "[START of stress]" >> "$LOG_DIR/load-temps.txt"
-sensors >> "$LOG_DIR/load-temps.txt"
-wait $STRESS_PID
-echo "[END of stress]" >> "$LOG_DIR/load-temps.txt"
-sensors >> "$LOG_DIR/load-temps.txt"
-
+# Phase 3: Cooldown
 echo "❄️ Phase 3: COOLDOWN (5 mins)..."
-sleep 300
-echo "--- COOLDOWN ---" > "$LOG_DIR/cooldown-temps.txt"
-uptime >> "$LOG_DIR/cooldown-temps.txt"
-sensors >> "$LOG_DIR/cooldown-temps.txt"
+for i in {1..30}; do
+    sensors >> "$LOG_COOLDOWN"
+    echo "---" >> "$LOG_COOLDOWN"
+    sleep 10
+done
 
-# 📝 Auto-generate Markdown summary
-SUMMARY_FILE="$LOG_DIR/summary.md"
-cat > "$SUMMARY_FILE" <<EOF
-# 🧪 CPU Temperature Test Summary
+# Append results summary
+echo "✅ Logging summary to: $SUMMARY_FILE"
+{
+    echo "### $LABEL Test - $(date)"
+    echo "- Idle:    $LOG_IDLE"
+    echo "- Load:    $LOG_LOAD"
+    echo "- Cooldown:$LOG_COOLDOWN"
+    echo ""
+} >> "$SUMMARY_FILE"
 
-**System:** MacBookPro8,1  
-**User:** jshaw  
-**Date:** $(date)  
-**Test ID:** $TIMESTAMP
+echo "✅ Test complete."
 
----
-
-## 📊 Temperature Phases
-
-| Phase    | Source File         | Notes              |
-|----------|---------------------|---------------------|
-| Idle     | \`idle-temps.txt\`   | Before stress test  |
-| Load     | \`load-temps.txt\`   | During stress (5m)  |
-| Cooldown | \`cooldown-temps.txt\` | 5m after stress     |
-
----
-
-## ✅ Files Saved
-
-- $LOG_DIR/idle-temps.txt  
-- $LOG_DIR/load-temps.txt  
-- $LOG_DIR/cooldown-temps.txt  
-- $LOG_DIR/summary.md  
-
-All data saved under:  
-\`$LOG_DIR\`
-
-EOF
-
-echo "✅ Test complete. Summary written to:"
-echo "$SUMMARY_FILE"
