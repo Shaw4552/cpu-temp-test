@@ -76,6 +76,28 @@ Fan Behavior	2000–6200 RPM	Responsive to thermal load
 
 ✅ System is quieter and cooler during daily use
 
+🧊 Cooling Pad Comparison: Targus Chill Mat (Dual Fan)
+Date: June 22, 2025
+Model: Targus Chill Mat, USB-powered dual-fan
+Purpose: Measure CPU thermal behavior with and without cooling pad under identical conditions.
+
+🔍 Comparison Summary
+Condition	With Pad (°C)	Without Pad (°C)	Difference	Notes
+Idle Avg	32.3	35.1	↓ ~2.8°C	Lower idle baseline
+Max Load	81.8	85.7	↓ ~3.9°C	Reduced peak under load
+Cooldown Time	3m 40s	4m 25s	↓ ~45s	Faster temp normalization
+
+✅ Key Observations
+The cooling pad consistently improved temperature margins across all test phases.
+
+It slightly reduced fan speeds and helped avoid peak RPM.
+
+Ideal for hot weather, extended workloads, or passive longevity improvements.
+
+📁 Logs located in:
+
+test-2025-06-22_cooling-pad-comparison/
+
 📦 Backup & Access
 Project stored at:
 
