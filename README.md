@@ -139,21 +139,3 @@ This project highlights:
 Maintainer: jshaw
 Machine: devbox-mint
 Repository: github.com/Shaw4552/cpu-temp-test
-
-yaml
-
-
----
-
-### ✅ Next Git Steps (run this in your project folder):
-
-```bash
-git add README.md
-git commit -m "Finalized and polished README.md"
-git push
-🔗 Optional: LinkedIn Post Template
-Would you like me to draft a short, polished LinkedIn post next? Something like:
-
-"Just completed a full thermal optimization test on my 2011 MacBook Pro running Linux Mint! Using Bash scripting, stress testing tools, and lm-sensors, I benchmarked CPU cooling performance before and after applying new thermal paste. The results were impressive — temps dropped by 10°C at idle and 15°C under load. Full project here: [GitHub repo]"
-
-Let me know and I’ll write it for you.
