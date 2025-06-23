@@ -65,7 +65,9 @@ cpu-temp-test/
 │   ├── cooldown-temps.txt
 │   └── results-summary.md
 └── README.md                    # This file
+
 ✅ Observations (Post-Test Summary)
+
 Condition	Temperature (°C)	Notes
 Idle	~34–36°C	Improved ~10°C after repaste
 Under Load	Max ~85°C	Previously reached ~100°C
@@ -82,6 +84,7 @@ Model: Targus Chill Mat, USB-powered dual-fan
 Purpose: Measure CPU thermal behavior with and without cooling pad under identical conditions.
 
 🔍 Comparison Summary
+
 Condition	With Pad (°C)	Without Pad (°C)	Difference	Notes
 Idle Avg	32.3	35.1	↓ ~2.8°C	Lower idle baseline
 Max Load	81.8	85.7	↓ ~3.9°C	Reduced peak under load
