@@ -134,8 +134,6 @@ This project highlights:
 
 📁 Git + Markdown documentation workflows
 
-🟢 Recommended: Share on LinkedIn, add to your résumé/portfolio, and link in job applications.
-
 Maintainer: jshaw
 Machine: devbox-mint
 Repository: github.com/Shaw4552/cpu-temp-test
