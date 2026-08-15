@@ -1,15 +1,15 @@
 📄 cpu-temp-test-howto.md
 📁 Recommended path:
-/mnt/FreeCloud41/Projects/cpu-temp-test/cpu-temp-test-howto.md
+/path/to/cpu-temp-test/cpu-temp-test-howto.md
 
 markdown
 Copy
 Edit
 # 🧪 CPU Temp Test - How to Run
 
-**System:** MacBookPro8,1  
-**User:** jshaw  
-**Location:** `/mnt/FreeCloud41/Projects/cpu-temp-test`  
+**System:** MacBookPro8,1
+**User:** jshaw
+**Location:** `/path/to/cpu-temp-test`
 **Purpose:** Manually run a post-thermal-paste CPU temperature check using best practices.
 
 ---
@@ -31,7 +31,7 @@ Edit
 Open a terminal and run:
 
 ```bash
-cd /mnt/FreeCloud41/Projects/cpu-temp-test
+cd /path/to/cpu-temp-test
 ./cpu-temp-test.sh
 📌 Make sure the script is executable. If not, run:
 
@@ -45,7 +45,7 @@ After a run, a new folder will be created:
 swift
 Copy
 Edit
-/mnt/FreeCloud41/Projects/cpu-temp-test/test-2025-06-21_15-30-00/
+/path/to/cpu-temp-test/test-2025-06-21_15-30-00/
 ├── idle-temps.txt
 ├── load-temps.txt
 ├── cooldown-temps.txt
@@ -82,7 +82,7 @@ To delete all test logs:
 bash
 Copy
 Edit
-rm -rf /mnt/FreeCloud41/Projects/cpu-temp-test/test-*/
+rm -rf /path/to/cpu-temp-test/test-*/
 🔒 Make sure you're deleting only test directories.
 
 📅 Last Updated

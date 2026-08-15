@@ -6,7 +6,7 @@
 # System: MacBookPro8,1 - Linux Mint
 # =============================================
 
-PROJECT_DIR="/mnt/FreeCloud41/Projects/cpu-temp-test"
+PROJECT_DIR="/path/to/cpu-temp-test"
 TIMESTAMP=$(date "+%Y-%m-%d_%H-%M-%S")
 LOG_DIR="$PROJECT_DIR/test-$TIMESTAMP"
 mkdir -p "$LOG_DIR"

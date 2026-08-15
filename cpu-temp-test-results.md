@@ -3,7 +3,7 @@
 **System:** MacBookPro8,1 (Linux Mint dual boot)  
 **User:** jshaw  
 **Test Date:** June 21, 2025  
-**Project Path:** `/mnt/FreeCloud41/Projects/cpu-temp-test/`
+**Project Path:** `/path/to/cpu-temp-test/`
 
 ---
 
@@ -30,7 +30,7 @@
 
 ## 🗂 Saved Logs
 
-All logs are located in `/mnt/FreeCloud41/Projects/cpu-temp-test/`:
+All logs are located in `/path/to/cpu-temp-test/`:
 
 - `idle-temps.txt`
 - `load-temps.txt`

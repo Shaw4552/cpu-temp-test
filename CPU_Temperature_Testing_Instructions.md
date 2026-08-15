@@ -3,7 +3,7 @@ _Post Thermal Paste Application_
 
 **Date:** [Insert Date]  
 **System:** MacBookPro8,1 running Linux Mint  
-**Project Folder:** `/mnt/FreeCloud41/Projects/cpu-temp-test/`
+**Project Folder:** `/path/to/cpu-temp-test/`
 
 ---
 
@@ -36,8 +36,8 @@ Make sure the system is idle (minimal CPU activity). Then run:
 bash
 Copy
 Edit
-sensors > /mnt/FreeCloud41/Projects/cpu-temp-test/idle-temps.txt
-uptime >> /mnt/FreeCloud41/Projects/cpu-temp-test/idle-temps.txt
+sensors > /path/to/cpu-temp-test/idle-temps.txt
+uptime >> /path/to/cpu-temp-test/idle-temps.txt
 3. Run CPU Stress Test
 Run a 5-minute stress test on 2 CPU cores:
 
@@ -57,16 +57,16 @@ Immediately after the stress test finishes:
 bash
 Copy
 Edit
-sensors > /mnt/FreeCloud41/Projects/cpu-temp-test/load-temps.txt
-uptime >> /mnt/FreeCloud41/Projects/cpu-temp-test/load-temps.txt
+sensors > /path/to/cpu-temp-test/load-temps.txt
+uptime >> /path/to/cpu-temp-test/load-temps.txt
 5. Cooldown Period
 Wait 5 minutes to allow CPU to cool down. Then record cooldown temps:
 
 bash
 Copy
 Edit
-sensors > /mnt/FreeCloud41/Projects/cpu-temp-test/cooldown-temps.txt
-uptime >> /mnt/FreeCloud41/Projects/cpu-temp-test/cooldown-temps.txt
+sensors > /path/to/cpu-temp-test/cooldown-temps.txt
+uptime >> /path/to/cpu-temp-test/cooldown-temps.txt
 Notes
 Ensure no other heavy processes are running during tests for accuracy
 

@@ -3,7 +3,7 @@
 **System:** MacBookPro8,1 (Linux Mint)  
 **Thermal Paste:** Thermal Grizzly Kryonaut  
 **User:** jshaw  
-**Project Path:** /mnt/FreeCloud41/Projects/cpu-temp-test
+**Project Path:** /path/to/cpu-temp-test
 
 ---
 
@@ -37,5 +37,5 @@ Edit
 You can now save that to:
 
 ```bash
-/mnt/FreeCloud41/Projects/cpu-temp-test/TEST_LOG.md
+/path/to/cpu-temp-test/TEST_LOG.md
 

@@ -1,8 +1,8 @@
 # 🧪 CPU Temperature Test Summary
 
-**System:** MacBookPro8,1  
-**User:** jshaw  
-**Date:** Sat Jun 21 04:19:41 PM CDT 2025  
+**System:** MacBookPro8,1
+**User:** jshaw
+**Date:** Sat Jun 21 04:19:41 PM CDT 2025
 **Test ID:** 2025-06-21_16-09-38
 
 ---
@@ -19,11 +19,11 @@
 
 ## ✅ Files Saved
 
-- /mnt/FreeCloud41/Projects/cpu-temp-test/test-2025-06-21_16-09-38/idle-temps.txt  
-- /mnt/FreeCloud41/Projects/cpu-temp-test/test-2025-06-21_16-09-38/load-temps.txt  
-- /mnt/FreeCloud41/Projects/cpu-temp-test/test-2025-06-21_16-09-38/cooldown-temps.txt  
-- /mnt/FreeCloud41/Projects/cpu-temp-test/test-2025-06-21_16-09-38/summary.md  
+- /path/to/cpu-temp-test/test-2025-06-21_16-09-38/idle-temps.txt
+- /path/to/cpu-temp-test/test-2025-06-21_16-09-38/load-temps.txt
+- /path/to/cpu-temp-test/test-2025-06-21_16-09-38/cooldown-temps.txt
+- /path/to/cpu-temp-test/test-2025-06-21_16-09-38/summary.md
 
-All data saved under:  
-`/mnt/FreeCloud41/Projects/cpu-temp-test/test-2025-06-21_16-09-38`
+All data saved under:
+`/path/to/cpu-temp-test/test-2025-06-21_16-09-38`
 
