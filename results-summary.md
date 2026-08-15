@@ -3,7 +3,7 @@
 **Date:** June 21, 2025  
 **System:** MacBookPro8,1 (Linux Mint)  
 **User:** jshaw  
-**Project Directory:** `/mnt/FreeCloud41/Projects/cpu-temp-test`
+**Project Directory:** `/path/to/cpu-temp-test`
 
 ---
 
@@ -82,18 +82,18 @@ The thermal paste application was **successful**. System is now:
 ---
 
 **Maintained by:** jshaw  
-**Storage:** `/mnt/FreeCloud41/Projects/cpu-temp-test/` on NAS `FreeCloud41`
+**Storage:** `/path/to/cpu-temp-test/` on NAS `network-storage`
 ✅ Save This Summary File
 Run the following to write it to the correct location:
 
 bash
 Copy code
-tee /mnt/FreeCloud41/Projects/cpu-temp-test/results-summary.md > /dev/null << 'EOF'
+tee /path/to/cpu-temp-test/results-summary.md > /dev/null << 'EOF'
 # 🧊 CPU Thermal Paste Test — Summary Report
 **Date:** June 21, 2025  
 **System:** MacBookPro8,1 (Linux Mint)  
 **User:** jshaw  
-**Project Directory:** `/mnt/FreeCloud41/Projects/cpu-temp-test`
+**Project Directory:** `/path/to/cpu-temp-test`
 ...
 [content continues as above]
 ...

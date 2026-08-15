@@ -1,142 +1,168 @@
-# 🧪 CPU Temp Test: Post-Thermal Paste Application
+# CPU Temp Test: Post-Thermal Paste Application
 
-**Author:** jshaw  
-**System:** MacBookPro8,1 (Early 2011)  
-**Environment:** Linux Mint 21.3 + macOS Monterey (dual boot)  
-**Test Date:** June 21, 2025  
+> **Supporting Portfolio Project**
+>
+> This project documents an earlier Linux troubleshooting and hardware-validation exercise using repeatable thermal testing, Bash automation, sensor logging, and data comparison.
+
+**System:** MacBookPro8,1 (Early 2011)
+**Environment:** Linux Mint 21.3 + macOS Monterey (dual boot)
+**Initial Test Date:** June 21, 2025
 **Repository:** [github.com/Shaw4552/cpu-temp-test](https://github.com/Shaw4552/cpu-temp-test)
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
-This project benchmarks CPU temperatures and fan behavior **after replacing thermal paste** (Thermal Grizzly Kryonaut) and upgrading the SSD and RAM. It validates cooling performance and documents a repeatable Linux-based testing method.
+This project measures CPU temperatures and fan behavior after replacing thermal paste and performing basic hardware maintenance.
 
----
-
-## 🖥 System Specs
-
-- **Model:** MacBookPro8,1 (2011)
-- **CPU:** Intel Core i5-2415M (2 cores, 4 threads)
-- **RAM:** 16 GB DDR3
-- **Storage:** 512 GB SATA SSD
-- **Thermal Paste:** 🔥 *Thermal Grizzly Kryonaut* (applied 2025-06-21)
-- **Cooling Maintenance:** Heatsink cleaned, fan dusted
+The goal was to validate whether the maintenance improved thermal performance and to document a repeatable Linux-based test process.
 
 ---
 
-## 📊 Test Procedure
+## System Specs
 
-### 1. 💤 Idle Test
-- System idled on desktop ~10 minutes
-- CPU temps and fan RPM logged every 10 seconds
+* **Model:** MacBookPro8,1 (2011)
+* **CPU:** Intel Core i5-2415M
+* **RAM:** 16 GB DDR3
+* **Storage:** 512 GB SATA SSD
+* **Thermal Paste:** Thermal Grizzly Kryonaut
+* **Cooling Maintenance:** Heatsink cleaned and fan dusted
 
-### 2. 🔥 Load Test
-- 5-minute stress test:
-  ```bash
-  stress --cpu 2 --timeout 300
-Temps and fan speed recorded throughout
+---
 
-3. ❄️ Cooldown Test
-Post-stress cooldown monitored for ~5 minutes
+## Test Procedure
 
-Logged temperature recovery behavior
+### 1. Idle Test
 
-🔧 Tools Used
-lm-sensors: temperature + fan data
+* System idled on the desktop for approximately 10 minutes.
+* CPU temperature and fan behavior were recorded.
 
-stress: CPU stress testing
+### 2. Load Test
 
-watch sensors: live monitoring
+A five-minute CPU stress test was performed:
 
-cpu-temp-test.sh: automation script
+```bash
+stress --cpu 2 --timeout 300
+```
 
-rsync: backup to NAS
+Temperature data was recorded during the load period.
 
-📁 Folder Structure
+### 3. Cooldown Test
 
+* Post-stress cooldown was monitored for approximately five minutes.
+* Temperature recovery behavior was recorded.
+
+---
+
+## Tools Used
+
+* `lm-sensors` — CPU temperature and fan data
+* `stress` — CPU load generation
+* `sensors` — hardware monitoring
+* `cpu-temp-test.sh` — automated test collection
+* `gnuplot` — result visualization
+* Git — version control and test history
+
+---
+
+## Repository Structure
+
+```text
 cpu-temp-test/
-├── cpu-temp-test.sh              # Automation script
-├── cpu-temp-test-results.md     # Markdown summary of results
-├── TEST_LOG.md                  # Rolling log of test runs
-├── test-2025-06-21_16-09-38/    # Timestamped output folder
-│   ├── idle-temps.txt
-│   ├── load-temps.txt
-│   ├── cooldown-temps.txt
-│   └── results-summary.md
-└── README.md                    # This file
+├── cpu-temp-test.sh
+├── plot-core-temps.sh
+├── cpu-temp-test-results.md
+├── TEST_LOG.md
+├── charts/
+├── archive/
+│   └── cpu-temp-test_v1.sh
+├── test-2025-06-21_16-09-38/
+├── test-2025-06-22_cooling-pad-comparison/
+└── README.md
+```
 
-✅ Observations (Post-Test Summary)
+The `archive/` directory preserves an earlier version of the testing script to document project progression.
 
-Condition	Temperature (°C)	Notes
-Idle	~34–36°C	Improved ~10°C after repaste
-Under Load	Max ~85°C	Previously reached ~100°C
-Cooldown	Stabilized <50°C	Returned to idle in under 5 minutes
-Fan Behavior	2000–6200 RPM	Responsive to thermal load
+---
 
-✅ No signs of thermal throttling
+## Initial Test Results
 
-✅ System is quieter and cooler during daily use
+| Condition    |        Result | Notes                                             |
+| ------------ | ------------: | ------------------------------------------------- |
+| Idle         |      ~34–36°C | Approximately 10°C lower after repaste            |
+| Under Load   |     Max ~85°C | Previously reached approximately 100°C            |
+| Cooldown     |         <50°C | Returned toward idle range within about 5 minutes |
+| Fan Behavior | 2000–6200 RPM | Responded to thermal load                         |
 
-🧊 Cooling Pad Comparison: Targus Chill Mat (Dual Fan)
-Date: June 22, 2025
-Model: Targus Chill Mat, USB-powered dual-fan
-Purpose: Measure CPU thermal behavior with and without cooling pad under identical conditions.
+Observed during this test:
 
-🔍 Comparison Summary
+* no signs of thermal throttling
+* lower operating temperatures after maintenance
+* improved cooldown behavior
 
-Condition	With Pad (°C)	Without Pad (°C)	Difference	Notes
-Idle Avg	32.3	35.1	↓ ~2.8°C	Lower idle baseline
-Max Load	81.8	85.7	↓ ~3.9°C	Reduced peak under load
-Cooldown Time	3m 40s	4m 25s	↓ ~45s	Faster temp normalization
+---
 
-✅ Key Observations
-The cooling pad consistently improved temperature margins across all test phases.
+## Cooling Pad Comparison
 
-It slightly reduced fan speeds and helped avoid peak RPM.
+A second test on June 22, 2025 compared the system with and without a Targus Chill Mat under similar test conditions.
 
-Ideal for hot weather, extended workloads, or passive longevity improvements.
+| Condition     | With Pad | Without Pad |   Difference |
+| ------------- | -------: | ----------: | -----------: |
+| Idle Average  |   32.3°C |      35.1°C | ~2.8°C lower |
+| Maximum Load  |   81.8°C |      85.7°C | ~3.9°C lower |
+| Cooldown Time |   3m 40s |      4m 25s |  ~45s faster |
 
-📁 Logs located in:
+The cooling pad improved temperature margins across the measured test phases.
 
+Raw logs and comparison data are retained in:
+
+```text
 test-2025-06-22_cooling-pad-comparison/
+```
 
-📦 Backup & Access
-Project stored at:
+---
 
+## Automation
 
-/mnt/FreeCloud41/Projects/cpu-temp-test/
-Auto-mounted via /etc/fstab using x-systemd.automount
-Credentials secured in: /etc/samba/credentials-mycloud
+The current `cpu-temp-test.sh` script supports comparison testing with:
 
-🗂 Git Version Control
-This project is versioned with Git:
+```bash
+./cpu-temp-test.sh --with-pad
+```
 
-git init
-git remote add origin git@github.com:Shaw4552/cpu-temp-test.git
-git add .
-git commit -m "Initial commit"
-git push -u origin main
-🚀 Next Steps & Enhancements
-📈 Add visual graphs via gnuplot or matplotlib
+or:
 
-🛠 Wrap into CLI utility
+```bash
+./cpu-temp-test.sh --without-pad
+```
 
-📨 Add test-complete notifications (email/desktop)
+The script:
 
-📊 Monthly thermal monitoring + trend tracking
+* validates required commands
+* records idle temperature samples
+* runs CPU load while collecting temperature data
+* records cooldown samples
+* stores results in the project directory
+* appends a summary of the test run
 
-🌐 Showcase & Promote
-This project highlights:
+---
 
-🧰 Linux system diagnostics
+## What This Project Demonstrates
 
-⚙️ Bash scripting & automation
+* Linux system diagnostics
+* Bash scripting
+* hardware troubleshooting
+* repeatable testing methodology
+* sensor data collection
+* result comparison
+* basic data visualization
+* Git-based project history
+* technical documentation
 
-📉 Data logging & interpretation
+---
 
-📁 Git + Markdown documentation workflows
+## Project Progression
 
-Maintainer: jshaw
-Machine: devbox-mint
-Repository: github.com/Shaw4552/cpu-temp-test
+The initial version of this project used machine-specific storage paths and simpler sampling logic.
+
+The current version retains the original test evidence while improving portability, repository hygiene, and the accuracy of load-phase data collection.
